@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import com.study.util.DTO;
 
 
@@ -35,9 +36,12 @@ public class Ajax3Api extends HttpServlet {
 //			}
 //		});
 		
-		response.setContentType("text/plain; charset=utf8");
+		response.setContentType("application/json; charset=utf8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
+		
+//		String str = "문자열1";
+//		str = str + "문자열2";
 		
 		StringBuilder stringBuilder = new StringBuilder(); // 문자열을 합칠 때 주로 사용함
 		
@@ -49,7 +53,10 @@ public class Ajax3Api extends HttpServlet {
 		
 		stringBuilder.delete((stringBuilder.length()) -1 , stringBuilder.length()); // 어디서부터 어디 전까지
 		
-		out.print(stringBuilder.toString());
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty("phoneNumber", stringBuilder.toString());
+		
+		out.print(jsonObject.toString());
 		
 	}
 

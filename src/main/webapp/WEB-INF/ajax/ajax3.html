@@ -33,9 +33,9 @@
 				data: { // -> requestData
 					data: JSON.stringify(phoneNumber) 
 					},
-				dataType: "text",
+				dataType: "json",
 				success: response => {
-					alert(response);
+					consol.log(response);
 				},
 				error: response => {
 					alert("데이터 전송 실패");
