@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+	<input type="text" class="phone1">
+	<input type="text" class="phone2">
+	<input type="text" class="phone3">
+	<button type="button" class="submit-button"></button>
+	
+	<script type="text/javascript">
+	
+		const submitButton = document.querySelector(".submitButton");
+		
+		submitButton.onclick = () => {
+			let phoneNumber = {
+				phone1: phone[0].value,	
+				phone2: phone[1].value,	
+				phone3: phone[2].value
+			}
+			
+//			let requestData = { //객체
+//					data: JSON.stringify(phoneNumber) // 오브젝트를 JSON 형태로 변환
+//			};
+			
+			$.ajax ({
+				async: false,
+				type: "post",
+				url: "/api/ajax3",
+				data: { // -> requestData
+					data: JSON.stringify(phoneNumber) 
+					},
+				dataType: "text",
+				success: response => {
+					alert(response);
+				},
+				error: response => {
+					alert("데이터 전송 실패");
+				}
+				
+			});
+		}
+	
+	</script>
+
+</body>
+</html>

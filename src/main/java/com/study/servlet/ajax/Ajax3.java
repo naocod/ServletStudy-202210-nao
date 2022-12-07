@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ajax2")
-public class Ajax2 extends HttpServlet {
+@WebServlet("/ajax3")
+public class Ajax3 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/ajax/ajax2.html").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/ajax/ajax3.html").forward(request, response);
 	}
 
 

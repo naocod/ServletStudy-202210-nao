@@ -13,43 +13,44 @@
 	<button type="button" class="submit-button">전송</button>
 
 	<script type="text/javascript">
-		//const submitButton = ;
+		const submitButton = document.querySelector(".submit-button");
 	
-		const username = document.querySelector(".username");
-		const password = document.querySelector(".password");
-		const name = document.querySelector(".name");
-		
-		let user = {
-				username: null,
-				password: null,
-				name: null
+		submitButton.onclick = () => {
+			const username = document.querySelector(".username");
+			const password = document.querySelector(".password");
+			const name = document.querySelector(".name");
+			
+			let user = {
+					username: null,
+					password: null,
+					name: null
+			};
+			
+			user.username = username.value;
+			user.password = password.value;
+			user.name = name.value;
+			
+			let requestData = {
+					async: false, // true -> 비동기, false -> 동기
+					type: "get",
+					url: "/api/ajax1",
+					data: user,
+					dataType: "text",
+					success: response => { // 화살표 함수. 매개변수 하나라서 괄호생략 가능
+						alert("요청 성공!")
+						alert(response);
+					},
+					error: function (response) { // 익명함수
+						alert("요청 실패!");
+					}
+			};
+			
+			$.ajax(requestData);
+			
+			alert("이거 언제 호출됨?");
+			
+			alert("데이터 전송");
 		};
-		
-		user.username = username.value;
-		user.password = password.value;
-		user.name = name.value;
-		
-		let requestData = {
-				async: false, // true -> 비동기, false -> 동기
-				type: "get",
-				url: "/api/ajax1",
-				data: user,
-				dataType: "text",
-				success: response => { // 화살표 함수. 매개변수 하나라서 괄호생략 가능
-					alert("요청 성공!")
-					alert(response);
-				},
-				error: function (response) { // 익명함수
-					alert("요청 실패!");
-				}
-		};
-		
-		$.ajax(requestData);
-		
-		alert("이거 언제 호출됨?");
-		
-		alert("데이터 전송");
-//	};
 	
 	</script>
 
